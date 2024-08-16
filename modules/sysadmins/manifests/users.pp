@@ -14,11 +14,4 @@ class sysadmins::users (
     groups     => ['sysadmins'],
     managehome => true,
   }
-
-  file { 'etc/motd':
-    ensure => file,
-    source => 'puppet://modules/sysadmins/motd.text',
-    mode   => 0444,
-    
-  }
 }
