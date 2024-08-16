@@ -1,10 +1,8 @@
-class sysadmins::users (
-    String $group,
-){
+class sysadmins::users {
   user { 'aokoth':
     ensure     => present,
     uid        => 9999,
-    groups     => ["$group"],
+    groups     => ['sysadmins'],
     managehome => true,
   }
 

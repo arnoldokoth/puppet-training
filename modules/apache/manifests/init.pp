@@ -1,22 +1,26 @@
 class apache {
-    package { 'httpd':
+    $package_name = 'httpd'
+    $service_name = 'httpd'
+    $config_file = '/etc/httpd/conf/httpd.conf'
+
+    package { $package_name:
         ensure => installed,
     }
 
-    file { '/etc/httpd/conf/httpd.conf':
+    file { $config_file:
         ensure    => file,
         source    => 'puppet:///modules/apache/httpd_minimal.conf',
-        require   => Package['httpd'],
+        require   => Package[$package_name],
         owner     => 'apache',
         group     => 'apache',
         mode      => '0755',
         show_diff => false,
     }
 
-    service { 'httpd':
+    service { $service_name:
         ensure    => running,
         enable    => true,
-        subscribe => File['/etc/httpd/conf/httpd.conf'],
+        subscribe => File[$config_file],
     }
 
     file { '/var/www/html':
