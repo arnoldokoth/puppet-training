@@ -1,7 +1,19 @@
 class apache {
-    $package_name = 'httpd'
-    $service_name = 'httpd'
-    $config_file = '/etc/httpd/conf/httpd.conf'
+    case $::facts['os']['family'] {
+        'RedHat': {
+            $package_name = 'httpd'
+            $service_name = 'httpd'
+            $config_file = '/etc/httpd/conf/httpd.conf'
+        }
+        'Debian': {
+            $package_name = 'apache2'
+            $service_name = 'apache2'
+            $config_file = '/etc/apache2/apache.conf'
+        }
+        default: {
+            fail('Unsupported Operating System')
+        }
+    }
 
     package { $package_name:
         ensure => installed,
