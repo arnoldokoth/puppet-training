@@ -49,3 +49,14 @@ $users.each | $user | {
         content => 'export PATH=$PATH:/opt/puppetlabs/puppet/bin'
     }
 }
+
+# Writing Custom Functions
+# Legacy Ruby API (deprecated)
+# Modern Ruby API
+# Puppet DSL
+
+# Ruby Functions
+# <modulepath>/<module>/lib/puppet/functions/<module>/<functionname>.rb
+
+# Puppet Functions
+# <modulepath>/<module>/functions/<functionname>.pp
