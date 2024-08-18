@@ -16,4 +16,7 @@ class motd {
         ensure => symlink,
         target => '/etc/motd',
     }
+
+    $message = motd::sayhello('Arnold')
+    notify { "${message}": }
 }
