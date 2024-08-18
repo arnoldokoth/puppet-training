@@ -38,4 +38,7 @@ class apache {
     file { '/var/www/html':
         ensure => directory,
     }
+
+    $message = apache::sayhello("User")
+    notify { "${message}": }
 }
