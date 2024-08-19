@@ -1,0 +1,5 @@
+<%- | String $os_name, String $os_major, String $os_minor, String $server_name | -%>
+Welcome To Puppet Training by Enviatics!
+
+You are logged into <%= $server_name %>
+Running <%= "${os_name} ${os_major}.${os_minor}" %>
